@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListBarangController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ItemController;
 
 //Route::get('/', function () {
 //    return view('welcome');
@@ -10,6 +13,7 @@ use App\Http\Controllers\ListBarangController;
 
 Route ::get('/', [HomeController::class, 'index']);
 Route ::get('/contact', [HomeController::class, 'contact']);
+
 Route ::get('/welcome', function () {
     return view('welcome');
 });
@@ -26,8 +30,19 @@ Route::prefix('admin')->group(function () {
     });
 });
 
-// Route::get('listbarang/{id}/{nama}', function ($id, $nama) {
-//    return view('list_barang' , compact('id', 'nama'));
-// });
+//Route::get('listbarang/{id}/{nama}', function ($id, $nama) {
+//return view('list_barang' , compact('id', 'nama'));
+//});
 
-Route::get('/listbarang/{id}/{nama}', [ListBarangController::class, 'tampilkan']);
+Route::get('/listbarang/{id}/{nama}',[ListBarangController::class, 'tampilkan']);
+
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/dashboard', function () {
+    return "Selamat datang di dashboard!";
+})->name('dashboard');
+;
+
+
+Route::get('/items', [ItemController::class, 'index'])->name('items.index');
