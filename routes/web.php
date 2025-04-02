@@ -6,6 +6,7 @@ use App\Http\Controllers\ListBarangController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\Ferdiankontroler;
 
 //Route::get('/', function () {
 //    return view('welcome');
@@ -46,3 +47,13 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/items', [ItemController::class, 'index'])->name('items.index');
+
+Route::get('/barang', [FerdianKontroler::class, 'tampilkan']);
+
+Route::get('/index', function () {
+    return view('index');
+});
+
+Route::get('/registrasi', function () {
+    return view('registrasi');
+});
